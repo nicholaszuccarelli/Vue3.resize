@@ -1,4 +1,5 @@
 .DS_Store
 node_modules/
 npm-debug.log
-/example/simple/bower_components/
+package-lock.json
+dist/

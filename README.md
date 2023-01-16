@@ -1,4 +1,4 @@
-# Vue.resize
+# Vue3.resize
 
 [![GitHub open issues](https://img.shields.io/github/issues/David-Desmaisons/Vue.resize.svg)](https://github.com/David-Desmaisons/Vue.resize/issues?q=is%3Aopen+is%3Aissue)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/David-Desmaisons/Vue.resize.svg)](https://github.com/David-Desmaisons/Vue.resize/issues?q=is%3Aissue+is%3Aclosed)
@@ -8,6 +8,8 @@
 [![MIT License](https://img.shields.io/github/license/David-Desmaisons/Vue.resize.svg)](https://github.com/David-Desmaisons/Vue.resize/blob/master/LICENSE)
 
 Vue directive to detect HTML resize events based on [CSS Element Queries](https://github.com/marcj/css-element-queries) with debouncing and throttling capacity.
+
+Forked from the original Vue 2 variant: https://github.com/David-Desmaisons/Vue.resize
 
 ## Demo
 
@@ -63,23 +65,23 @@ Use this option to receive the resize callback right after the element is mounte
 
 - Available through npm:
 ``` js
- npm install vue-resize-directive --save
+ npm install vue3-resize-directive --save
 ```
 
 - For Modules
 
 ``` js
 // ES6
-import resize from 'vue-resize-directive'
+import resize from 'vue3-resize-directive'
 //...
 export default {
     directives: {
         resize,
     }
 //...
-  
+
 // ES5
-var resize = require('vue-resize-directive')
+var resize = require('vue3-resize-directive')
 ```
 
 - #### For `<script>` Include

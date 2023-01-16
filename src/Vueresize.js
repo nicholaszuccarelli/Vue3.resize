@@ -1,6 +1,5 @@
-import ResizeSensor from 'resizeSensor'
+import ResizeSensor from 'css-element-queries/src/ResizeSensor'
 import lodashDebounce from 'lodash.debounce'
-require('./findPolyfill');
 require('intersection-observer');
 
 const { debounce = lodashDebounce } = lodashDebounce;
@@ -53,17 +52,17 @@ function createResizeSensor(el, { value, arg, options }) {
   return res;
 }
 
-function inserted(el, { value, arg, modifiers }, { context: component }) {
+function mounted(el, { value, arg, modifiers, instance }) {
   if (!value || typeof value !== 'function') {
     console.warn('v-resize should received a function as value');
     return;
   }
   const options = getOptions(modifiers);
-  if (component && component.$el === el) {
-    component.$once("hook:deactivated", () => {
-      unbind(el);
-      component.$once("hook:activated", () => {
-        inserted(el, { value, arg, modifiers }, { context: component });
+  if (instance && instance.$el === el) {
+    instance.$once("hook:deactivated", () => {
+      unmounted(el);
+      instance.$once("hook:activated", () => {
+        mounted(el, { value, arg, modifiers, instance });
       })
     })
   }
@@ -75,7 +74,7 @@ function inserted(el, { value, arg, modifiers }, { context: component }) {
   el.__visibility__listener__ = listenToVisible(el, () => createResizeSensor(el, { value, arg, options }));
 };
 
-function unbind(el) {
+function unmounted(el) {
   if (el.__visibility__listener__) {
     el.__visibility__listener__.disconnect();
   }
@@ -86,6 +85,6 @@ function unbind(el) {
 };
 
 export default {
-  inserted,
-  unbind
+  mounted,
+  unmounted
 }
