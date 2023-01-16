@@ -58,14 +58,6 @@ function mounted(el, { value, arg, modifiers, instance }) {
     return;
   }
   const options = getOptions(modifiers);
-  if (instance && instance.$el === el) {
-    instance.$once("hook:deactivated", () => {
-      unmounted(el);
-      instance.$once("hook:activated", () => {
-        mounted(el, { value, arg, modifiers, instance });
-      })
-    })
-  }
   if (el.offsetParent) {
     createResizeSensor(el, { value, arg, options });
     return;

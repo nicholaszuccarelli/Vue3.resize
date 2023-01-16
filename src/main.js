@@ -1,5 +1,3 @@
-import Vueresize from "@/Vueresize";
+import resize from "@/Vueresize";
 
-export default {
-  Vueresize
-}
+export default resize

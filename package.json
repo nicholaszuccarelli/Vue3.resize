@@ -1,6 +1,6 @@
 {
   "name": "vue3-resize-directive",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Vue.js 3.0 directive to detect element resize",
   "main": "dist/Vueresize.common.js",
   "files": [
